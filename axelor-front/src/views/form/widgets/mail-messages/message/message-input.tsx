@@ -18,6 +18,7 @@ import { useDMSPopup } from "@/views/dms/builder/hooks";
 import { MessageFiles } from "./message-files";
 import { useMessagePopup } from "./message-form";
 import styles from "./message-input.module.scss";
+import HtmlEditor from "../../html/editor";
 
 function TextareaAutoSizeInput(props: any) {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -133,14 +134,23 @@ export function MessageInput({
 
   return (
     <Box>
-      <TextareaAutoSizeInput
+    {/*  <TextareaAutoSizeInput
         value={value}
         autoFocus={focus}
         placeholder={i18n.get("Write your comment here")}
         onChange={handleInputChange}
         onBlur={() => onBlur && onBlur(value)}
         onKeyDown={handleKeyDown}
-      />
+      />*/}
+      <Box flex={1} border rounded>
+        <HtmlEditor
+          value={value}
+          onChange={handleInputChange}
+          autoFocus={focus}
+          placeholder={i18n.get("Write your comment here")}
+          onKeyDown={handleKeyDown} className={undefined} onBlur={undefined} height={undefined} lite={undefined}
+          translatable={undefined} onTranslate={undefined}        />
+      </Box>
       {files && (
         <MessageFiles
           showIcon={false}
