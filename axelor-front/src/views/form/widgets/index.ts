@@ -69,3 +69,4 @@ export * from "./toggle";
 export * from "./url";
 export * from "./widget-select";
 export * from "./wkf-status";
+export * from "./customWidget";

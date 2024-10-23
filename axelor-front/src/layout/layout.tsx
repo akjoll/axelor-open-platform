@@ -24,6 +24,7 @@ import { MaterialIcon } from "@axelor/ui/icons/material-icon";
 import { useState } from "react";
 import styles from "./layout.module.scss";
 import { useSidebar } from "./nav-drawer/hook";
+export * from "./customWidget";
 
 export function Layout() {
   const { loading } = useMenu();
@@ -78,6 +79,7 @@ export function Layout() {
       <DialogsProvider />
       <AlertsProvider />
       <HttpWatch />
+      <CustomWidget />
     </div>
   );
 }
