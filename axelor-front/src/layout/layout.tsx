@@ -24,7 +24,7 @@ import { MaterialIcon } from "@axelor/ui/icons/material-icon";
 import { useState } from "react";
 import styles from "./layout.module.scss";
 import { useSidebar } from "./nav-drawer/hook";
-export * from "./customWidget";
+import { CustomWidget } from "@/views/form/widgets/customWidget";
 
 export function Layout() {
   const { loading } = useMenu();
