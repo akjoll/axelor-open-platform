@@ -143,7 +143,7 @@ function ActionCommandItem({
 type ToolbarItem = Menu | MenuItem | MenuDivider | Button;
 
 function getTextFull(item: ToolbarItem) {
-  return item.showTitle !== false ? item.title ?? "" : "";
+  return item.showTitle !== false ? (item.title ?? "") : "";
 }
 
 function getTextResponsive(item: ToolbarItem) {
@@ -371,7 +371,9 @@ export function ViewToolBar(props: ViewToolBarProps) {
 
   const switchActions = useMemo(() => {
     if (views.length === 1) return;
-    return views.map((item) => {
+    const filteredViews = views.filter((view) => view.type === "grid");
+
+    return filteredViews.map((item) => {
       const key = item.type;
       const text = toTitleCase(item.type);
       return {
@@ -500,16 +502,20 @@ export function ViewToolBar(props: ViewToolBarProps) {
         <CommandBar items={farItems} className={styles.farItems} />
       )}
       {Boolean(helpLink) && (
-        <CommandBar items={[
-          {
-            key: "helpLink",
-            description: i18n.get("Show help"),
-            iconProps: {
-              icon: "help",
+        <CommandBar
+          items={[
+            {
+              key: "helpLink",
+              description: i18n.get("Show help"),
+              iconProps: {
+                icon: "help",
+              },
+              onClick: () =>
+                window.open(helpLink, "_blank", "noopener,noreferrer"),
             },
-            onClick: () => window.open(helpLink, "_blank", "noopener,noreferrer"),
-          },
-        ]} className={styles.helpLink} />
+          ]}
+          className={styles.helpLink}
+        />
       )}
     </Box>
   );

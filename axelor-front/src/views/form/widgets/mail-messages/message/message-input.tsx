@@ -35,7 +35,15 @@ function TextareaAutoSizeInput(props: any) {
     input && (input.style.height = getHeight());
   }, [value]);
 
-  return <Input ref={inputRef} as="textarea" rows={1} className={styles.textarea} {...props} />;
+  return (
+    <Input
+      ref={inputRef}
+      as="textarea"
+      rows={1}
+      className={styles.textarea}
+      {...props}
+    />
+  );
 }
 
 export function MessageInput({
@@ -134,7 +142,7 @@ export function MessageInput({
 
   return (
     <Box>
-    {/*  <TextareaAutoSizeInput
+      {/*  <TextareaAutoSizeInput
         value={value}
         autoFocus={focus}
         placeholder={i18n.get("Write your comment here")}
@@ -148,8 +156,14 @@ export function MessageInput({
           onChange={handleInputChange}
           autoFocus={focus}
           placeholder={i18n.get("Write your comment here")}
-          onKeyDown={handleKeyDown} className={undefined} onBlur={undefined} height={undefined} lite={undefined}
-          translatable={undefined} onTranslate={undefined}        />
+          onKeyDown={handleKeyDown}
+          className={undefined}
+          onBlur={undefined}
+          height={undefined}
+          lite={undefined}
+          translatable={undefined}
+          onTranslate={undefined}
+        />
       </Box>
       {files && (
         <MessageFiles
@@ -170,9 +184,7 @@ export function MessageInput({
             onMouseDown: (e) => e.preventDefault(),
           })}
         >
-          <div className={styles.title}>
-            {i18n.get("Post")}
-          </div>
+          <div className={styles.title}>{i18n.get("Post")}</div>
         </Button>
         <Button
           size="sm"
@@ -182,21 +194,23 @@ export function MessageInput({
           onClick={handleAttachment}
         >
           <div className={styles.title}>
-            <MaterialIcon icon="attach_file"/>
+            <MaterialIcon icon="attach_file" />
           </div>
         </Button>
-        <Button
-          size="sm"
-          ms={2}
-          variant="primary"
-          outline
-          onClick={handleEdit}
-        >
-          <div className={styles.title}>
-            <MaterialIcon icon="edit"/>
-          </div>
-        </Button>
+        {false && (
+          <Button
+            size="sm"
+            ms={2}
+            variant="primary"
+            outline
+            onClick={handleEdit}
+          >
+            <div className={styles.title}>
+              <MaterialIcon icon="edit" />
+            </div>
+          </Button>
+        )}
       </Box>
     </Box>
-);
+  );
 }

@@ -357,17 +357,21 @@ export function MessageBox({
       {!isMail && (
         <Box d="flex" flexDirection="column" g={2} mb={3}>
           <Box d="flex" flexDirection={{ base: "column", md: "row" }} g={2}>
-            {filters.map(({ title, value }, ind) => (
-              <Button
-                key={ind}
-                variant="primary"
-                outline={filter !== value}
-                onClick={() => onFilterChange?.(value)}
-                flexGrow={{ base: 1, md: 0 }}
-              >
-                {title}
-              </Button>
-            ))}
+            {false && (
+              <Box>
+                {filters.map(({ title, value }, ind) => (
+                  <Button
+                    key={ind}
+                    variant="primary"
+                    outline={filter !== value}
+                    onClick={() => onFilterChange?.(value)}
+                    flexGrow={{ base: 1, md: 0 }}
+                  >
+                    {title}
+                  </Button>
+                ))}
+              </Box>
+            )}
           </Box>
           {filter !== "notification" && (
             <MessageInput
